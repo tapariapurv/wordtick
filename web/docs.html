@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Install Wordtick in Google Docs</title>
+<meta name="description" content="Add the free Wordtick words-to-time calculator to a Google Doc in about a minute. No store needed.">
+<link rel="icon" href="logo.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="install.css"></head><body><div class="page">
+<a class="top" href="/"><img src="logo.svg" alt="">wordtick</a>
+<h1>install in <span class="m">Google Docs</span></h1>
+<p class="lead">Takes about a minute. You add Wordtick to one Google Doc, and it times your selection or the whole document.</p>
+<div class="box"><h2>Steps</h2><ol>
+<li>Open the Google Doc you want to use.<p>Sign in with your Google account.</p></li>
+<li>Click <b>Extensions → Apps Script</b>.<p>A new tab opens with a file called <code>Code.gs</code>.</p></li>
+<li>Replace everything in <code>Code.gs</code> with this, then press <b>Save</b>.
+<div class="code"><button type="button" data-c="c1">Copy</button><pre id="c1">function onOpen(){DocumentApp.getUi().createAddonMenu().addItem('Open Wordtick','show').addToUi()}
+function show(){DocumentApp.getUi().showSidebar(HtmlService.createHtmlOutputFromFile('Sidebar').setTitle('Wordtick'))}
+function getText(which){
+  var d=DocumentApp.getActiveDocument();
+  if(which==='all')return d.getBody().getText();
+  var s=d.getSelection();if(!s)return'';
+  return s.getRangeElements().map(function(e){
+    var el=e.getElement();if(!el.editAsText)return'';
+    var t=el.asText().getText();
+    return e.isPartial()?t.substring(e.getStartOffset(),e.getEndOffsetInclusive()+1):t}).join(' ')}</pre></div></li>
+<li>Click <b>+</b> next to Files, choose <b>HTML</b>, and name it <code>Sidebar</code>. Replace its contents with this, then <b>Save</b>.
+<div class="code"><button type="button" data-c="c2">Copy</button><pre id="c2">&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;base target="_top"&gt;&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;&lt;link rel="stylesheet" href="https://wordtick.vercel.app/style.css"&gt;&lt;/head&gt;&lt;body&gt;&lt;div id="app"&gt;&lt;/div&gt;
+&lt;script src="https://wordtick.vercel.app/core.js"&gt;&lt;/script&gt;
+&lt;script&gt;WP.mount(document.getElementById('app'),{mini:true,source:function(w,set){google.script.run.withSuccessHandler(set).getText(w)}});&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</pre></div></li>
+<li>Go back to your Doc and <b>reload the page</b>.<p>After a few seconds you'll see <b>Extensions → Wordtick → Open Wordtick</b>.</p></li>
+<li>Click <b>Open Wordtick</b>. The first time, Google asks you to approve it.<p>Click <b>Continue</b>, pick your account, then <b>Advanced → Go to Wordtick (unsafe)</b> and <b>Allow</b>. It's marked unsafe only because it hasn't been through Google's review yet. Wordtick only reads the open document to count words, and never edits it.</p></li>
+</ol>
+<p class="note">Want it in another Doc? Repeat these steps, or open your Doc and choose <b>File → Make a copy</b> so the add-on comes with it.</p></div>
+<footer>Questions? <a href="privacy.html">Privacy, terms &amp; support</a> · <a href="word.html">Install in Word</a></footer>
+</div>
+<script>
+document.querySelectorAll('.code button').forEach(function(b){b.onclick=function(){
+ var t=document.getElementById(b.dataset.c).textContent;
+ (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).catch(function(){
+  var r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.c));var s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy')});
+ b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)}});
+</script></body></html>

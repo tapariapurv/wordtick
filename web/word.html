@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Install Wordtick in Microsoft Word</title>
+<meta name="description" content="Add the free Wordtick words-to-time calculator to Microsoft Word. Works in Word on the web and Word for Mac.">
+<link rel="icon" href="logo.svg"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="install.css"></head><body><div class="page">
+<a class="top" href="/"><img src="logo.svg" alt="">wordtick</a>
+<h1>install in <span class="c">Microsoft Word</span></h1>
+<p class="lead">First download the add-in file, then load it into Word. Pick the version of Word you use.</p>
+<div class="box"><h2>Step 1: get the file</h2>
+<a class="btn go" href="word/manifest.xml" download="wordtick-manifest.xml">Download wordtick-manifest.xml</a>
+<p class="note">It's a small file that tells Word where Wordtick lives. Nothing else is installed on your computer.</p></div>
+
+<div class="box"><h2>Step 2: load it into Word</h2>
+<h3>Word on the web <small>(easiest, works on any computer)</small></h3>
+<ol>
+<li>Open a document at <a href="https://www.office.com/launch/word">office.com</a>.</li>
+<li>Click <b>Home → Add-ins → More Add-ins</b>. In the dialog open <b>My Add-ins</b>.</li>
+<li>Click <b>Upload My Add-in</b>, choose <code>wordtick-manifest.xml</code>, and click <b>Upload</b>.<p>Wordtick opens beside your page. Select some text and watch the time.</p></li>
+</ol>
+<h3>Word for Mac</h3>
+<ol>
+<li>Quit Word. In Finder, press <kbd>Shift</kbd>+<kbd>Cmd</kbd>+<kbd>G</kbd> and go to <code>~/Library/Containers/com.microsoft.Word/Data/Documents</code>.</li>
+<li>Create a folder named <code>wef</code> there if it doesn't exist, and put <code>wordtick-manifest.xml</code> inside it.</li>
+<li>Open Word and a document. Click <b>Insert → Add-ins → My Add-ins</b>, open the <b>Developer Add-ins</b> section, and choose <b>Wordtick</b>.</li>
+</ol>
+<h3>Word for Windows</h3>
+<ol>
+<li>Easiest: use <b>Word on the web</b> above.</li>
+<li>Or in Word, click <b>Insert → Add-ins → My Add-ins → Manage My Add-ins → Upload My Add-in</b> and choose the file. This option isn't shown in every version.</li>
+</ol>
+<p class="note">Wordtick reads your selection only to count words. It never edits or sends your document anywhere. Sideloaded add-ins are marked as "developer" add-ins until Wordtick is listed in Microsoft's store.</p></div>
+<footer>Questions? <a href="privacy.html">Privacy, terms &amp; support</a> · <a href="docs.html">Install in Google Docs</a></footer>
+</div></body></html>
