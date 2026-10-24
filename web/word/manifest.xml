@@ -5,10 +5,10 @@
   <ProviderName>Wordtick</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Wordtick"/>
-  <Description DefaultValue="Convert words to time: how long to read, speak, or type your document."/>
+  <Description DefaultValue="Convert words to time: see how long your document takes to read aloud or silently."/>
   <IconUrl DefaultValue="https://wordtick.vercel.app/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://wordtick.vercel.app/icon-128.png"/>
-  <SupportUrl DefaultValue="https://wordtick.vercel.app/"/>
+  <SupportUrl DefaultValue="https://wordtick.vercel.app/privacy.html"/>
   <AppDomains><AppDomain>https://wordtick.vercel.app</AppDomain></AppDomains>
   <Hosts><Host Name="Document"/></Hosts>
   <DefaultSettings><SourceLocation DefaultValue="https://wordtick.vercel.app/word/taskpane.html"/></DefaultSettings>
@@ -26,7 +26,7 @@
       <bt:Images><bt:Image id="I16" DefaultValue="https://wordtick.vercel.app/icon-16.png"/><bt:Image id="I32" DefaultValue="https://wordtick.vercel.app/icon-32.png"/><bt:Image id="I80" DefaultValue="https://wordtick.vercel.app/icon-80.png"/></bt:Images>
       <bt:Urls><bt:Url id="P" DefaultValue="https://wordtick.vercel.app/word/taskpane.html"/><bt:Url id="U" DefaultValue="https://wordtick.vercel.app/"/></bt:Urls>
       <bt:ShortStrings><bt:String id="T" DefaultValue="Wordtick"/></bt:ShortStrings>
-      <bt:LongStrings><bt:String id="D" DefaultValue="How long will it take to read, speak or type your document?"/></bt:LongStrings>
+      <bt:LongStrings><bt:String id="D" DefaultValue="How long will your document take to read aloud or silently?"/></bt:LongStrings>
     </Resources>
   </VersionOverrides>
 </OfficeApp>
