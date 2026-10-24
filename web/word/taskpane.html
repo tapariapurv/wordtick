@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WordPace</title>
+<link rel="stylesheet" href="../style.css">
+<script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script></head><body>
+<div id="app"></div><script src="../core.js"></script>
+<script>
+Office.onReady(function(){
+ WP.mount(document.getElementById('app'),{mini:true,source:function(which,set){
+  Word.run(function(c){var r=which==='sel'?c.document.getSelection():c.document.body;r.load('text');
+   return c.sync().then(function(){set(r.text)})})}})});
+</script></body></html>

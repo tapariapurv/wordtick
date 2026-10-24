@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WordPace – Convert Words to Time (Reading, Speaking, Typing)</title>
+<meta name="description" content="Free words to time calculator. Find out how long it takes to read, speak, present, type or handwrite any text. Paste text or enter a word count. Also for Google Docs and Microsoft Word.">
+<link rel="icon" href="logo.svg"><link rel="stylesheet" href="style.css">
+<style>
+header,main,footer{max-width:760px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;gap:10px;padding-top:20px;font-weight:700;font-size:1.25rem}header img{width:36px;height:36px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.15;margin:32px 0 8px;text-align:center}
+.lead{text-align:center;color:var(--mute);margin:0 0 24px}
+h2{margin-top:48px}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}
+details{border-bottom:1px solid var(--line);padding:12px 0}summary{font-weight:600;cursor:pointer}
+.add{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.add div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
+footer{color:var(--mute);padding-bottom:40px;margin-top:48px;font-size:.9rem}
+</style></head><body>
+<header><img src="logo.svg" alt="">WordPace</header>
+<main>
+<h1>How long will it take? Convert words to time.</h1>
+<p class="lead">Paste your text or type a word count. We'll tell you how long it takes to read, say or type.</p>
+<div id="app"></div>
+
+<h2>Common conversions</h2>
+<p>Silent reading at an average 238 words per minute, and reading aloud at 130.</p>
+<table><thead><tr><th>Words</th><th>Read silently</th><th>Read aloud</th></tr></thead><tbody id="tbl"></tbody></table>
+
+<h2>Use it where you write</h2>
+<div class="add"><div><b>Google Docs</b><br>Free add-on: Extensions → WordPace. Times your whole doc or just your selection.</div>
+<div><b>Microsoft Word</b><br>Free add-in in the Home ribbon. Same simple calculator, right beside your page.</div></div>
+
+<h2>Questions</h2>
+<div id="faq"></div>
+</main>
+<footer>© WordPace · Free to use. Reading speeds are averages; yours may differ, so try your own speed above.</footer>
+<script src="core.js"></script>
+<script>
+WP.mount(document.getElementById('app'));
+document.getElementById('tbl').innerHTML=[100,250,500,750,1000,1500,2000,2500,5000,10000].map(function(n){
+ return'<tr><td>'+n.toLocaleString()+'</td><td>'+WP.fmt(n,238)+'</td><td>'+WP.fmt(n,130)+'</td></tr>'}).join('');
+var q=[['How long does it take to read 1,000 words?','About '+WP.fmt(1000,238)+' silently at an average 238 words per minute, or '+WP.fmt(1000,130)+' out loud at 130.'],
+['How many words is a 5-minute speech?','Around 650 words at a relaxed speaking pace of 130 words per minute.'],
+['How many words is a 10-minute presentation?','Around 1,200 words at 120 words per minute, which leaves room for pauses and slides.'],
+['What is the average reading speed?','Adults read about 238 words per minute silently. Reading aloud is slower, usually 130 to 160.'],
+['How fast is average typing?','About 40 words per minute. Skilled typists reach 65 or more.']];
+document.getElementById('faq').innerHTML=q.map(function(x){return'<details><summary>'+x[0]+'</summary><p>'+x[1]+'</p></details>'}).join('');
+document.head.insertAdjacentHTML('beforeend','<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:q.map(function(x){return{'@type':'Question',name:x[0],acceptedAnswer:{'@type':'Answer',text:x[1]}}})})+'<\/script>');
+</script></body></html>
