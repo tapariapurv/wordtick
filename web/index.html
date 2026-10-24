@@ -21,14 +21,15 @@ footer{color:#808080;margin:32px 0 40px;font-size:.9rem}
 <div class="hero"><h1>turn<br><span class="m">words</span><br>into <span class="c">time</span>.</h1>
 <div><p>How long will your speech, essay or script take?</p><p>Enter a word count, or paste in your text. We'll estimate the time for reading aloud and reading silently, at slow, average and fast speeds.</p></div></div>
 <div id="app"></div>
-<div class="box"><h2>Common Conversions (Reading Aloud)</h2><div id="tbl"></div></div>
-<div class="box"><h2>Use it where you write</h2><div class="add"><div><b>Google Docs</b>Extensions → Wordtick. Times your selection or the whole doc.</div><div><b>Microsoft Word</b>Home tab → Wordtick. The same calculator beside your page.</div></div></div>
-<div class="box"><h2>Questions</h2><div id="faq"></div></div>
+<div class="box"><h2 data-i="table-list">Common Conversions (Reading Aloud)</h2><div id="tbl"></div></div>
+<div class="box"><h2 data-i="file-lines">Use it where you write</h2><div class="add"><div><b data-i="google">Google Docs</b>Extensions → Wordtick. Times your selection or the whole doc.</div><div><b data-i="microsoft">Microsoft Word</b>Home tab → Wordtick. The same calculator beside your page.</div></div></div>
+<div class="box"><h2 data-i="circle-question">Questions</h2><div id="faq"></div></div>
 <footer>Wordtick is free. Speeds are averages, so your own pace may differ. · <a href="privacy.html">Privacy, terms &amp; support</a></footer>
 </div>
 <script src="core.js"></script>
 <script>
 WP.mount(document.getElementById('app'));
+document.querySelectorAll('[data-i]').forEach(function(e){e.insertAdjacentHTML('afterbegin',WP.icon(e.dataset.i))});
 document.getElementById('tbl').innerHTML=[500,750,1000,1500,2000,2500,3000,5000].map(function(n){
  return'<div class="row"><span>How long does it take to read <span class="m">'+n.toLocaleString()+'</span> words?</span><span class="c">'+WP.fmt(n,130)+'</span></div>'}).join('');
 var q=[['How long does it take to read 1,000 words?','About '+WP.fmt(1000,130)+' out loud at an average 130 words per minute, or '+WP.fmt(1000,250)+' silently at 250.'],
