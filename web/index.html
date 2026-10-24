@@ -1,45 +1,40 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>WordPace – Convert Words to Time (Reading, Speaking, Typing)</title>
-<meta name="description" content="Free words to time calculator. Find out how long it takes to read, speak, present, type or handwrite any text. Paste text or enter a word count. Also for Google Docs and Microsoft Word.">
+<title>Wordtick – Convert Words to Time | Reading Time Calculator</title>
+<meta name="description" content="Free words to time calculator. Paste your text or enter a word count to see how long it takes to read aloud or silently. Also available for Google Docs and Microsoft Word.">
 <link rel="icon" href="logo.svg"><link rel="stylesheet" href="style.css">
 <style>
-header,main,footer{max-width:760px;margin:0 auto;padding:0 16px}
-header{display:flex;align-items:center;gap:10px;padding-top:20px;font-weight:700;font-size:1.25rem}header img{width:36px;height:36px}
-h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.15;margin:32px 0 8px;text-align:center}
-.lead{text-align:center;color:var(--mute);margin:0 0 24px}
-h2{margin-top:48px}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line)}
-details{border-bottom:1px solid var(--line);padding:12px 0}summary{font-weight:600;cursor:pointer}
-.add{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.add div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
-footer{color:var(--mute);padding-bottom:40px;margin-top:48px;font-size:.9rem}
-</style></head><body>
-<header><img src="logo.svg" alt="">WordPace</header>
-<main>
-<h1>How long will it take? Convert words to time.</h1>
-<p class="lead">Paste your text or type a word count. We'll tell you how long it takes to read, say or type.</p>
+.page{max-width:650px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;gap:10px;padding:20px 0 0;font-weight:600;font-size:1.1rem}.top img{width:28px;height:28px}
+.hero{display:grid;grid-template-columns:auto 1fr;gap:20px 40px;align-items:start;margin:36px 0 32px}
+h1{font-size:2rem;line-height:1.3;font-weight:700;margin:0}.hero p{margin:0 0 12px}.hero p:last-child{margin:0}
+@media(max-width:560px){.hero{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:3px;padding:24px;margin-top:32px}
+h2{font-size:1.1rem;font-weight:600;margin:0 0 16px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;flex-wrap:wrap}
+.row span:last-child{white-space:nowrap}
+details{padding:10px 0;border-top:1px solid var(--line)}summary{cursor:pointer;font-weight:500}details p{margin:8px 0 0;color:var(--mute)}
+.add{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.add{grid-template-columns:1fr}}
+.add div{background:var(--card);border-radius:3px;padding:16px}.add b{display:block;margin-bottom:4px}
+footer{color:#808080;margin:32px 0 40px;font-size:.9rem}
+</style></head><body><div class="page">
+<div class="top"><img src="logo.svg" alt="">wordtick</div>
+<div class="hero"><h1>turn<br><span class="m">words</span><br>into <span class="c">time</span>.</h1>
+<div><p>How long will your speech, essay or script take?</p><p>Enter a word count, or paste in your text. We'll estimate the time for reading aloud and reading silently, at slow, average and fast speeds.</p></div></div>
 <div id="app"></div>
-
-<h2>Common conversions</h2>
-<p>Silent reading at an average 238 words per minute, and reading aloud at 130.</p>
-<table><thead><tr><th>Words</th><th>Read silently</th><th>Read aloud</th></tr></thead><tbody id="tbl"></tbody></table>
-
-<h2>Use it where you write</h2>
-<div class="add"><div><b>Google Docs</b><br>Free add-on: Extensions → WordPace. Times your whole doc or just your selection.</div>
-<div><b>Microsoft Word</b><br>Free add-in in the Home ribbon. Same simple calculator, right beside your page.</div></div>
-
-<h2>Questions</h2>
-<div id="faq"></div>
-</main>
-<footer>© WordPace · Free to use. Reading speeds are averages; yours may differ, so try your own speed above.</footer>
+<div class="box"><h2>Common Conversions (Reading Aloud)</h2><div id="tbl"></div></div>
+<div class="box"><h2>Use it where you write</h2><div class="add"><div><b>Google Docs</b>Extensions → Wordtick. Times your selection or the whole doc.</div><div><b>Microsoft Word</b>Home tab → Wordtick. The same calculator beside your page.</div></div></div>
+<div class="box"><h2>Questions</h2><div id="faq"></div></div>
+<footer>Wordtick is free. Speeds are averages, so your own pace may differ.</footer>
+</div>
 <script src="core.js"></script>
 <script>
 WP.mount(document.getElementById('app'));
-document.getElementById('tbl').innerHTML=[100,250,500,750,1000,1500,2000,2500,5000,10000].map(function(n){
- return'<tr><td>'+n.toLocaleString()+'</td><td>'+WP.fmt(n,238)+'</td><td>'+WP.fmt(n,130)+'</td></tr>'}).join('');
-var q=[['How long does it take to read 1,000 words?','About '+WP.fmt(1000,238)+' silently at an average 238 words per minute, or '+WP.fmt(1000,130)+' out loud at 130.'],
-['How many words is a 5-minute speech?','Around 650 words at a relaxed speaking pace of 130 words per minute.'],
-['How many words is a 10-minute presentation?','Around 1,200 words at 120 words per minute, which leaves room for pauses and slides.'],
-['What is the average reading speed?','Adults read about 238 words per minute silently. Reading aloud is slower, usually 130 to 160.'],
-['How fast is average typing?','About 40 words per minute. Skilled typists reach 65 or more.']];
+document.getElementById('tbl').innerHTML=[500,750,1000,1500,2000,2500,3000,5000].map(function(n){
+ return'<div class="row"><span>How long does it take to read <span class="m">'+n.toLocaleString()+'</span> words?</span><span class="c">'+WP.fmt(n,130)+'</span></div>'}).join('');
+var q=[['How long does it take to read 1,000 words?','About '+WP.fmt(1000,130)+' out loud at an average 130 words per minute, or '+WP.fmt(1000,250)+' silently at 250.'],
+['How many words is a 5-minute speech?','Around 650 words at an average speaking pace of 130 words per minute.'],
+['How many words is a 10-minute speech?','Around 1,300 words at an average speaking pace of 130 words per minute.'],
+['What is the average reading speed?','Reading aloud averages about 130 words per minute. Silent reading is faster, around 250.']];
 document.getElementById('faq').innerHTML=q.map(function(x){return'<details><summary>'+x[0]+'</summary><p>'+x[1]+'</p></details>'}).join('');
 document.head.insertAdjacentHTML('beforeend','<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:q.map(function(x){return{'@type':'Question',name:x[0],acceptedAnswer:{'@type':'Answer',text:x[1]}}})})+'<\/script>');
 </script></body></html>

@@ -1,6 +1,6 @@
-function onOpen(){DocumentApp.getUi().createAddonMenu().addItem('Open WordPace','show').addToUi()}
+function onOpen(){DocumentApp.getUi().createAddonMenu().addItem('Open Wordtick','show').addToUi()}
 function onInstall(){onOpen()}
-function show(){DocumentApp.getUi().showSidebar(HtmlService.createHtmlOutputFromFile('Sidebar').setTitle('WordPace'))}
+function show(){DocumentApp.getUi().showSidebar(HtmlService.createHtmlOutputFromFile('Sidebar').setTitle('Wordtick'))}
 // which: 'sel' | 'all'. Returns plain text for the sidebar.
 function getText(which){
   var d=DocumentApp.getActiveDocument();

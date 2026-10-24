@@ -1,65 +1,59 @@
-<!doctype html><html><head><base target="_top"><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{--bg:#fafaf7;--card:#fff;--ink:#1b1f3b;--mute:#5d6280;--line:#e4e4ee;--accent:#5b5bf0;--accent-ink:#fff;--soft:#eeeefe;--ease:cubic-bezier(.23,1,.32,1)}
-@media (prefers-color-scheme:dark){:root{--bg:#12142a;--card:#1b1e3a;--ink:#f1f1fa;--mute:#a4a8c8;--line:#2e3256;--accent:#8383ff;--accent-ink:#12142a;--soft:#262a52}}
+<!doctype html><html><head><base target="_top"><meta name="viewport" content="width=device-width,initial-scale=1"><style>@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+:root{--bg:#fff;--card:#f4f4f4;--ink:#000;--mute:#6b6b6b;--line:#ddd;--chip:#e6e6e6;--mint:#8be4b2;--mint-ink:#294635;--cyan:#07c1ff;--cyan-ink:#000;--field:#fff;--ease:cubic-bezier(.23,1,.32,1)}
+@media (prefers-color-scheme:dark){:root{--bg:#111;--card:#1c1c1c;--ink:#f2f2f2;--mute:#9a9a9a;--line:#333;--chip:#2a2a2a;--field:#111}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-a{color:var(--accent)}
-.wp{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;max-width:640px;margin:0 auto}
-.wp label{display:block;font-weight:600;margin:16px 0 8px}
-.wp textarea,.wp input{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px}
-.wp textarea{min-height:110px;resize:vertical}
-.wp textarea:focus,.wp input:focus,.seg button:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
-.seg{display:flex;flex-wrap:wrap;gap:8px}
-.seg button{flex:1 1 auto;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:10px 14px;cursor:pointer;transition:background .12s var(--ease),transform .1s var(--ease)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Rubik,system-ui,-apple-system,"Segoe UI",sans-serif}
+.m{background:var(--mint);color:#000;padding:0 .2em;border-radius:3px}
+.c{background:var(--cyan);color:#000;padding:0 .2em;border-radius:3px}
+.wp{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:24px;max-width:650px;margin:0 auto}
+.wp label{display:block;margin:20px 0 8px}.wp>label:first-child,.wp>.seg:first-child+label{margin-top:20px}
+.wp textarea{width:100%;min-height:72px;font:inherit;font-size:1.25rem;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:3px;padding:12px;resize:vertical}
+.wp textarea:focus{outline:2px solid var(--mint);outline-offset:0;border-color:var(--mint)}
+.wp small{display:block;color:var(--mute);margin-top:6px;font-size:.85rem}
+.seg{display:flex;flex-wrap:wrap;gap:10px}
+.seg button{font:inherit;color:var(--ink);background:var(--chip);border:0;border-radius:3px;padding:10px 14px;cursor:pointer;transition:background .12s var(--ease),transform .1s var(--ease)}
+@media (hover:hover){.seg button:hover{filter:brightness(.96)}}
 .seg button:active{transform:scale(.97)}
-.seg button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
-.wp small{display:block;color:var(--mute);margin-top:6px}
-.res{margin-top:20px;text-align:center;background:var(--soft);border-radius:16px;padding:18px 10px}
-.res b{display:block;font-size:2.4rem;line-height:1.1}
-.res span{color:var(--mute)}
-.src{display:flex;gap:8px;margin-top:12px}
-.src button{flex:1;font:inherit;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:12px;padding:10px;cursor:pointer}
-.wp.mini{border:0;border-radius:0;padding:12px;background:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.seg button[aria-pressed=true]{background:var(--mint);color:var(--mint-ink)}
+.wp .seg button small{display:inline;margin:0;color:inherit;font-size:inherit;opacity:.8}
+.res{margin-top:28px}.res span{display:block}.res b{display:block;font-size:2rem;font-weight:500;line-height:1.2}
+.res .d{color:var(--mute);font-size:.85rem}
+.src{margin-bottom:4px}.src button[aria-pressed]{}
+.wp.mini{border:0;padding:16px;max-width:none;background:var(--bg)}
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
-.seg button small{margin:0}.seg button[aria-pressed=true] small{color:inherit}
 </style></head><body><div id="app"></div>
-<script>// WordPace core: shared by website, Word add-in, and (inlined by build.mjs) the Docs sidebar.
+<script>// Wordtick core: shared by website, Word add-in, and (inlined by build.mjs) the Docs sidebar.
 var WP=(function(){
 var MODES=[
- {id:'read',name:'Silent reading',s:[200,238,300]},
- {id:'aloud',name:'Reading aloud',s:[100,130,160]},
- {id:'talk',name:'Presenting',s:[90,120,150]},
- {id:'type',name:'Typing',s:[25,40,65]},
- {id:'write',name:'Handwriting',s:[13,20,30]}];
+ {id:'aloud',name:'Reading Aloud',s:[100,130,160]},
+ {id:'read',name:'Silent Reading',s:[150,250,400]}];
 var LEVELS=['Slow','Average','Fast'];
 function count(t){t=String(t||'').trim();if(/^[\d,.\s]+$/.test(t)&&/\d/.test(t))return Math.round(parseFloat(t.replace(/[,\s]/g,''))||0);return(t.match(/\S+/g)||[]).length}
-function fmt(words,wpm){var s=Math.round(words/wpm*60);if(s<1)return words?'under 1 sec':'0 sec';
+function fmt(words,wpm){var s=Math.ceil(words/wpm*60-1e-9);if(s<1)return words?'under 1 sec':'0 sec';
  var h=Math.floor(s/3600),m=Math.floor(s%3600/60),r=s%60,o=[];
  if(h)o.push(h+' hr');if(m)o.push(m+' min');if(r&&!h)o.push(r+' sec');return o.join(' ')}
-function mount(el,opt){opt=opt||{};var st={mode:'read',lvl:1,words:0,custom:0};
+function mount(el,opt){opt=opt||{};var st={mode:'aloud',lvl:1,words:0};
  el.classList.add('wp');if(opt.mini)el.classList.add('mini');
- el.innerHTML=(opt.source?'<div class="src"><button data-s="sel">Selected text</button><button data-s="all">Whole document</button></div>':'')+
- '<label for="wp-t">Paste your text, or type a word count</label><textarea id="wp-t" placeholder="Paste text here, or type a number like 1500"></textarea><small id="wp-n"></small>'+
- '<label>What are you timing?</label><div class="seg" id="wp-m"></div>'+
- '<label>How fast?</label><div class="seg" id="wp-l"></div>'+
- '<label for="wp-c">Or set your own speed (words per minute)</label><input id="wp-c" type="number" min="1" inputmode="numeric" placeholder="e.g. 180">'+
- '<div class="res" aria-live="polite"><b id="wp-r">0 sec</b><span id="wp-d"></span></div>';
+ el.innerHTML=(opt.source?'<div class="seg src"><button data-s="sel">Use selection</button><button data-s="all">Use whole document</button></div>':'')+
+ '<div class="seg" id="wp-m"></div>'+
+ '<label for="wp-t">Word Count</label><textarea id="wp-t" rows="2"></textarea><small>...or paste in your text for auto-counting</small>'+
+ '<label>Reading Speed</label><div class="seg" id="wp-l"></div>'+
+ '<div class="res" aria-live="polite"><span>Result</span><b id="wp-r">0 sec</b><span class="d" id="wp-n"></span></div>';
  var $=function(i){return el.querySelector('#'+i)},t=$('wp-t');
- function wpm(){return st.custom>0?st.custom:MODES.find(function(m){return m.id===st.mode}).s[st.lvl]}
+ function wpm(){return MODES.find(function(m){return m.id===st.mode}).s[st.lvl]}
  function draw(){
   $('wp-m').innerHTML=MODES.map(function(m){return'<button data-m="'+m.id+'" aria-pressed="'+(m.id===st.mode)+'">'+m.name+'</button>'}).join('');
   var m=MODES.find(function(x){return x.id===st.mode});
-  $('wp-l').innerHTML=LEVELS.map(function(l,i){return'<button data-l="'+i+'" aria-pressed="'+(st.custom<=0&&i===st.lvl)+'">'+l+'<br><small>'+m.s[i]+' wpm</small></button>'}).join('');
-  $('wp-n').textContent=st.words.toLocaleString()+(st.words===1?' word':' words');
-  $('wp-r').textContent=fmt(st.words,wpm());$('wp-d').textContent=st.words?'at '+wpm()+' words per minute':'Add some words to begin'}
+  $('wp-l').innerHTML=LEVELS.map(function(l,i){return'<button data-l="'+i+'" aria-pressed="'+(i===st.lvl)+'">'+l+' ('+m.s[i]+' wpm)</button>'}).join('');
+  $('wp-r').textContent=fmt(st.words,wpm());$('wp-n').textContent=st.words?st.words.toLocaleString()+(st.words===1?' word':' words'):''}
  function set(txt){t.value=txt;st.words=count(txt);draw()}
  t.oninput=function(){st.words=count(t.value);draw()};
- $('wp-c').oninput=function(e){st.custom=+e.target.value||0;draw()};
  el.onclick=function(e){var b=e.target.closest('button');if(!b)return;
-  if(b.dataset.m)st.mode=b.dataset.m,st.custom=0,$('wp-c').value='';
-  if(b.dataset.l)st.lvl=+b.dataset.l,st.custom=0,$('wp-c').value='';
+  if(b.dataset.m)st.mode=b.dataset.m;if(b.dataset.l)st.lvl=+b.dataset.l;
   if(b.dataset.s)return opt.source(b.dataset.s,set);
   draw()};
- draw();return{set:set,wpm:function(){return wpm()}}}
+ draw();return{set:set}}
 return{MODES:MODES,count:count,fmt:fmt,mount:mount}})();
 
 
