@@ -24,3 +24,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Rubik,system-u
 @media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
 .wp.mini .seg button{padding:8px 10px;font-size:.9rem}.wp.mini textarea{font-size:1rem}.wp.mini .res b{font-size:1.75rem}
 .ic{width:1em;height:1em;vertical-align:-.125em;margin-right:.45em}.res span .ic{color:var(--mute)}h2 .ic{color:var(--mute)}
+
+.wp .hd{display:flex;align-items:center;gap:8px;font-weight:600;font-size:1.05rem}.wp .logo{width:24px;height:24px}
+.wp .hero{font-size:1.4rem;font-weight:700;line-height:1.3;margin:10px 0 16px}
+.wp input{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
+.wp input:focus{outline:2px solid var(--mint);border-color:var(--mint)}
