@@ -8,7 +8,7 @@
   <Description DefaultValue="Convert words to time: see how long your document takes to read aloud or silently."/>
   <IconUrl DefaultValue="https://wordtick.vercel.app/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://wordtick.vercel.app/icon-128.png"/>
-  <SupportUrl DefaultValue="https://wordtick.vercel.app/privacy.html"/>
+  <SupportUrl DefaultValue="https://wordtick.vercel.app/support.html"/>
   <AppDomains><AppDomain>https://wordtick.vercel.app</AppDomain></AppDomains>
   <Hosts><Host Name="Document"/></Hosts>
   <DefaultSettings><SourceLocation DefaultValue="https://wordtick.vercel.app/word/taskpane.html"/></DefaultSettings>

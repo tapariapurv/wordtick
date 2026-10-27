@@ -6,8 +6,8 @@
 - **Category:** Productivity (secondary: Utilities)
 - **Icon (300×300):** assets/appsource/icon-300.png
 - **Privacy policy URL:** https://wordtick.vercel.app/privacy.html
-- **Support URL:** https://wordtick.vercel.app/privacy.html
-- **Terms of use:** use Microsoft's Standard Contract, or https://wordtick.vercel.app/privacy.html
+- **Support URL:** https://wordtick.vercel.app/support.html
+- **Terms of use:** https://wordtick.vercel.app/terms.html
 - **Search keywords:** reading time, speech timer, word count
 - **Test notes for reviewers:** No sign-in needed. Open a document with some text → Home → Wordtick → "Use whole document". The result shows the time at 130 wpm (reading aloud).
 

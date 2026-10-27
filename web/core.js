@@ -28,8 +28,9 @@ function mount(el,opt){opt=opt||{};var st={mode:'aloud',lvl:1,words:0,cw:0};
   var m=MODES.find(function(x){return x.id===st.mode});
   $('wp-l').innerHTML=LEVELS.map(function(l,i){return'<button data-l="'+i+'" aria-pressed="'+(!st.cw&&i===st.lvl)+'">'+l+' ('+m.s[i]+' wpm)</button>'}).join('');
   $('wp-r').textContent=fmt(st.words,wpm());$('wp-n').textContent=st.words?st.words.toLocaleString()+(st.words===1?' word':' words'):''}
- function set(txt){t.value=txt;st.words=count(txt);draw()}
- t.oninput=function(){st.words=count(t.value);draw()};
+ // Pasted/dropped/imported text collapses to its word count; typed text is left as typed.
+ function set(txt){st.words=count(txt);t.value=st.words?String(st.words):'';draw()}
+ t.oninput=function(e){if(/^insertFrom(Paste|Drop)/.test(e&&e.inputType))return set(t.value);st.words=count(t.value);draw()};
  var c=$('wp-c');if(c)c.oninput=function(){st.cw=Math.max(0,+c.value||0);draw()};
  el.onclick=function(e){var b=e.target.closest('button');if(!b)return;
   if(b.dataset.m)st.mode=b.dataset.m;if(b.dataset.l){st.lvl=+b.dataset.l;st.cw=0;if(c)c.value=''}
