@@ -27,7 +27,7 @@ function getText(which){
 <li>Click <b>Open Wordtick</b>. The first time, Google asks you to approve it.<p>Click <b>Continue</b>, pick your account, then <b>Advanced → Go to Wordtick (unsafe)</b> and <b>Allow</b>. It's marked unsafe only because it hasn't been through Google's review yet. Wordtick only reads the open document to count words, and never edits it.</p></li>
 </ol>
 <p class="note">Want it in another Doc? Repeat these steps, or open your Doc and choose <b>File → Make a copy</b> so the add-on comes with it.</p></div>
-<footer>Questions? <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a> · <a href="word.html">Install in Word</a> · <a href="#" onclick="WTads.open();return false">Ad settings</a></footer>
+<footer>Questions? <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a> · <a href="word.html">Install in Word</a></footer>
 </div>
 <script>
 document.querySelectorAll('.code button').forEach(function(b){b.onclick=function(){
@@ -35,4 +35,4 @@ document.querySelectorAll('.code button').forEach(function(b){b.onclick=function
  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).catch(function(){
   var r=document.createRange();r.selectNodeContents(document.getElementById(b.dataset.c));var s=getSelection();s.removeAllRanges();s.addRange(r);document.execCommand('copy')});
  b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)}});
-</script><script src="ads.js"></script></body></html>
+</script></body></html>

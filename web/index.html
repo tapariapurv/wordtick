@@ -27,7 +27,7 @@ footer{color:#808080;margin:32px 0 40px;font-size:.9rem}
 <div class="box"><h2 data-i="table-list">Common Conversions (Reading Aloud)</h2><div id="tbl"></div></div>
 <div class="box"><h2 data-i="file-lines">Use it where you write</h2><div class="add"><div><b data-i="google">Google Docs</b>Extensions → Wordtick. Times your selection or the whole doc.<a href="docs.html">Install steps →</a></div><div><b data-i="microsoft">Microsoft Word</b>Home tab → Wordtick. The same calculator beside your page.<a href="word.html">Install steps →</a></div></div></div>
 <div class="box"><h2 data-i="circle-question">Questions</h2><div id="faq"></div></div>
-<footer>Wordtick is free. Speeds are averages, so your own pace may differ. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a> · <a href="#" onclick="WTads.open();return false">Ad settings</a></footer>
+<footer>Wordtick is free. Speeds are averages, so your own pace may differ. · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="support.html">Support</a></footer>
 </div>
 <script src="core.js"></script>
 <script>
@@ -41,4 +41,4 @@ var q=[['How long does it take to read 1,000 words?','About '+WP.fmt(1000,130)+'
 ['What is the average reading speed?','Reading aloud averages about 130 words per minute. Silent reading is faster, around 250.']];
 document.getElementById('faq').innerHTML=q.map(function(x){return'<details><summary>'+x[0]+'</summary><p>'+x[1]+'</p></details>'}).join('');
 document.head.insertAdjacentHTML('beforeend','<script type="application/ld+json">'+JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:q.map(function(x){return{'@type':'Question',name:x[0],acceptedAnswer:{'@type':'Answer',text:x[1]}}})})+'<\/script>');
-</script><script src="ads.js"></script></body></html>
+</script></body></html>
