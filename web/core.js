@@ -20,7 +20,8 @@ function mount(el,opt){opt=opt||{};var st={mode:'aloud',lvl:1,words:0,cw:0};
  '<label for="wp-t">Word Count</label><textarea id="wp-t" rows="2"></textarea><small>...or paste in your text for auto-counting</small>'+
  '<label>Reading Speed</label><div class="seg" id="wp-l"></div>'+
  (opt.mini?'<label for="wp-c">Custom speed (wpm)</label><input id="wp-c" type="number" min="1" inputmode="numeric" placeholder="e.g. 180">':'')+
- '<div class="res" aria-live="polite"><span>'+icon('clock')+'Result</span><b id="wp-r">0 sec</b><span class="d" id="wp-n"></span></div>';
+ '<div class="res" aria-live="polite"><span>'+icon('clock')+'Result</span><b id="wp-r">0 sec</b><span class="d" id="wp-n"></span></div>'+
+ (opt.mini?'<span class="copy">\u00a9 2026 <a href="https://tapariapurv.github.io" target="_blank" rel="noopener">Purv Taparia</a></span>':'');
  var $=function(i){return el.querySelector('#'+i)},t=$('wp-t');
  function wpm(){return st.cw||MODES.find(function(m){return m.id===st.mode}).s[st.lvl]}
  function draw(){

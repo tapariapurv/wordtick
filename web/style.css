@@ -29,3 +29,4 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Rubik,system-u
 .wp .hero{font-size:1.4rem;font-weight:700;line-height:1.3;margin:10px 0 16px}
 .wp input{width:100%;font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
 .wp input:focus{outline:2px solid var(--mint);border-color:var(--mint)}
+.copy{display:block;margin-top:8px;color:var(--mute);font-size:.85rem}.copy a{color:inherit}main>footer{margin-top:40px}.wp>.copy{text-align:center;margin-top:16px}
